@@ -4,19 +4,24 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 import { skipWaiting, clientsClaim } from 'workbox-core';
 
+const baseUrl = 'https://lwc-push-notification.herokuapp.com/';
+
 skipWaiting();
 clientsClaim();
 
-registerRoute(
-    ({ url }) => url.origin === 'https://lwc-push-notification.herokuapp.com/',
-    new StaleWhileRevalidate()
-);
+registerRoute(({ url }) => url.origin === baseUrl, new StaleWhileRevalidate());
 
 self.addEventListener('push', (event) => {
-    const title = 'Get Started With Workbox';
+    console.log('push received', { event });
+    const title = 'LWC Push Notification!';
     const options = {
-        body: event.data.text()
+        body: event.data.text(),
+        icon: `${baseUrl}/favicon.ico`,
+        image: `${baseUrl}/icons/icon-512x512.png`,
+        badge: `${baseUrl}/icons/icon-384x384.png`
     };
+
+    self.registration.showNotification(title, options);
     event.waitUntil(self.registration.showNotification(title, options));
 });
 
