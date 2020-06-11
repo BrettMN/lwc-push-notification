@@ -36,11 +36,14 @@
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker
-                        .register('/sw.js')
+                        .register('/sw.js', { scope: '/' })
                         .then((registration) => {
                             console.log('SW registered: ', registration);
                             registration.pushManager.subscribe({
-                                userVisibleOnly: true
+                                userVisibleOnly: true,
+                                applicationServerKey: urlBase64ToUint8Array(
+                                    'BNIoo99rCc2l--v6JCNFR7FUopIn350BNWgFG_gWKozYt6HXZ1UV_lKYhM_7RH0vwIk8vTkFo2ky_NlN1ahJtMY'
+                                )
                             });
                         });
                 });
