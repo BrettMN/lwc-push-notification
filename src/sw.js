@@ -1,9 +1,15 @@
-workbox.core.skipWaiting();
-workbox.core.clientsClaim();
+// Import just the `workbox-precaching` package.
+import { precacheAndRoute } from 'workbox-precaching';
+import { registerRoute } from 'workbox-routing';
+import { StaleWhileRevalidate } from 'workbox-strategies';
+import { skipWaiting, clientsClaim } from 'workbox-core';
 
-workbox.routing.registerRoute(
+skipWaiting();
+clientsClaim();
+
+registerRoute(
     ({ url }) => url.origin === 'https://lwc-push-notification.herokuapp.com/',
-    new workbox.strategies.StaleWhileRevalidate()
+    new StaleWhileRevalidate()
 );
 
 self.addEventListener('push', (event) => {
@@ -14,4 +20,4 @@ self.addEventListener('push', (event) => {
     event.waitUntil(self.registration.showNotification(title, options));
 });
 
-workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(self.__WB_MANIFEST);
