@@ -50,13 +50,13 @@
             }
 
             /**
-            * urlBase64ToUint8Array
-            * https://github.com/GoogleChromeLabs/web-push-codelab/issues/46#issuecomment-429273981
-            *
-            * @param {string} base64String a public vavid key
-            */
+             * urlBase64ToUint8Array
+             * https://github.com/GoogleChromeLabs/web-push-codelab/issues/46#issuecomment-429273981
+             *
+             * @param {string} base64String a public vavid key
+             */
             function urlBase64ToUint8Array(base64String) {
-                var padding = '='.repeat((4 - base64String.length % 4) % 4);
+                var padding = '='.repeat((4 - (base64String.length % 4)) % 4);
                 var base64 = (base64String + padding)
                     .replace(/\-/g, '+')
                     .replace(/_/g, '/');
@@ -67,7 +67,7 @@
                 for (var i = 0; i < rawData.length; ++i) {
                     outputArray[i] = rawData.charCodeAt(i);
                 }
-                re
+            }
         </script>
 
         <noscript>Javascript is required to run this application</noscript>
