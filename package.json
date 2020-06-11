@@ -1,9 +1,9 @@
 {
-    "name": "pwa-demo",
-    "description": "My amazing LWC app",
+    "name": "lwc-push-notification",
+    "description": "LWC app with Push Notifications",
     "version": "0.0.1",
-    "author": "Christophe Coenraets",
-    "bugs": "https://github.com/Christophe Coenraets/pwa-demo/issues",
+    "author": "Brett Nelson",
+    "bugs": "https://github.com/BrettMN/lwc-push-notification/issues",
     "dependencies": {
         "compression": "^1.7.4",
         "express": "^4.17.1"
@@ -20,7 +20,7 @@
         "npm": ">=6.4.1",
         "yarn": ">=1.9.4"
     },
-    "homepage": "https://github.com/Christophe Coenraets/pwa-demo",
+    "homepage": "https://github.com/BrettMN/lwc-push-notification",
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
