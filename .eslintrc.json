@@ -4,8 +4,5 @@
         "@lwc/lwc/no-async-operation": "warn",
         "@lwc/lwc/no-inner-html": "warn",
         "@lwc/lwc/no-document-query": "warn"
-    },
-    "globals": {
-        "workbox": "readonly"
     }
 }
